@@ -1,6 +1,6 @@
 <configuration>
 
-    <conversionRule conversionWord="coloredLevel" converterClass="play.api.Logger$ColoredLevel" />
+    <conversionRule conversionWord="coloredLevel" converterClass="play.api.libs.logback.ColoredLevel" />
 
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>logs/bard.log</file>

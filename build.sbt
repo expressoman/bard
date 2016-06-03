@@ -5,7 +5,7 @@ scalaVersion := "2.11.8"
 name := "bard"
 scalacOptions ++= Seq("-feature", "-deprecation", "-unchecked", "-target:jvm-1.8")
 
-lazy val bard = (project in file(".")).enablePlugins(PlayScala, RiffRaffArtifact, UniversalPlugin)
+lazy val bard = (project in file(".")).enablePlugins(PlayScala, RiffRaffArtifact)
 
 resolvers += "Sonatype releases" at "https://oss.sonatype.org/content/repositories/releases"
 

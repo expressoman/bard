@@ -1,0 +1,17 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Handled by client side code
+GET         /                                                             com.gu.bard.Application.index
+
+# Healthcheck
+GET        /healthcheck                                                   com.gu.bard.Application.healthcheck
+
+# Auth
+#GET         /login                                                        com.gu.bard.Login.login
+#GET         /oauth2callback                                               com.gu.bard.Login.oauth2Callback
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET        /assets/*file                                                  controllers.Assets.versioned(path="/public", file: Asset)

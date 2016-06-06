@@ -98,10 +98,9 @@
                 "CrossZone": true,
                 "Listeners": [
                     {
-                        "Protocol": "HTTPS",
-                        "LoadBalancerPort": "443",
-                        "InstancePort": "9000",
-                        "SSLCertificateId": { "Ref": "SSLCertificate" }
+                        "Protocol": "HTTP",
+                        "LoadBalancerPort": "80",
+                        "InstancePort": "9000"
                     }
                 ],
                 "HealthCheck": {

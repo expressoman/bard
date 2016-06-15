@@ -8,6 +8,10 @@ GET         /                                                             com.gu
 # Healthcheck
 GET        /healthcheck                                                   com.gu.bard.Application.healthcheck
 
+# API
+GET        /api/pages                                                     com.gu.bard.api.PageInsightsApi.getPages
+GET        /api/page-insights/:pageName                                   com.gu.bard.api.PageInsightsApi.getpageInsights(pageName, from, to)
+
 # Auth
 #GET         /login                                                        com.gu.bard.Login.login
 #GET         /oauth2callback                                               com.gu.bard.Login.oauth2Callback

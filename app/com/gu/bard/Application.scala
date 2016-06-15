@@ -1,7 +1,6 @@
 package com.gu.bard
 
 import com.typesafe.scalalogging.StrictLogging
-import play.api.libs.json.Json
 import play.api.mvc._
 
 class Application extends Controller with StrictLogging {

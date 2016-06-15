@@ -1,6 +1,7 @@
 package com.gu.bard.api
 
 import com.gu.bard.models.{ ErrorResponse, _ }
+import com.gu.bard.services.PageService
 import org.scalactic.{ Bad, Good }
 import play.api.libs.json.Json
 import play.api.mvc.{ Action, Controller }

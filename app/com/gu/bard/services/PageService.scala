@@ -1,7 +1,6 @@
-package com.gu.bard.api
+package com.gu.bard.services
 
 import com.gu.bard.models.{ DateParameters, FacebookPageConfig, Page }
-import com.gu.bard.services.DateRangeGenerator
 import com.gu.bard.settings.PageInsightsPageSettings
 import com.gu.bard.stores.{ FacebookPageInsights, FacebookPosts }
 

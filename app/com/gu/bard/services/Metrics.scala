@@ -1,7 +1,6 @@
-package com.gu.bard.api
+package com.gu.bard.services
 
 import com.gu.bard.models._
-import com.gu.bard.services.WeekRange
 import com.gu.bard.settings.MetricSettings
 import com.restfb.json.JsonObject
 import com.restfb.types.{ Insight, Post }

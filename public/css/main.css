@@ -1,0 +1,8 @@
+.page-wrapper {
+    padding : 20px;
+}
+
+/* Chartist overrides */
+.ct-axis-title {
+    font-size: 12px;
+}

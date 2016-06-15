@@ -1,16 +1,20 @@
 import React from 'react';
 
-export default class ReactApp extends React.Component {
+export default class Home extends React.Component {
 
     constructor(props) {
         super(props);
     }
 
+
     render() {
 
         return (
+
             <div id="page-wrapper">
-            	<h2>Dashboard</h2>
+                <div className="container-fluid">
+                    Home
+                </div>
             </div>
         );
     }

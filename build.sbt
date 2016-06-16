@@ -16,6 +16,7 @@ libraryDependencies ++= Seq(
   "com.gu" %% "play-googleauth" % "0.4.0",
   "org.scalactic" %% "scalactic" % "2.2.6",
   "com.gu" %% "configuration-magic-play2-4" % "1.2.0",
+  "com.github.ben-manes.caffeine" % "caffeine" % "1.3.3",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.1.0",
   "org.scalatest" %% "scalatest" % "2.2.5" % "test"
 )

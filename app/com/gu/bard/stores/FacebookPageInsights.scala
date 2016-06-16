@@ -8,11 +8,20 @@ import com.typesafe.scalalogging.StrictLogging
 object FacebookPageInsights extends StrictLogging {
 
   def getPageInsights(dateParameters: DateParameters, fbPageConfig: FacebookPageConfig): Option[Seq[Insight]] = {
-    val fbClient = FB(fbPageConfig.accessToken)
-    val connection = s"${fbPageConfig.id}/insights"
-    val period = "day"
 
-    FB.get[Insight](connection, dateParameters, period, fbClient)
+    val cacheKey = FacebookPageInsightsCache.key(fbPageConfig.name, dateParameters)
+
+    FacebookPageInsightsCache.get(cacheKey) orElse {
+      val fbClient = FB(fbPageConfig.accessToken)
+      val connection = s"${fbPageConfig.id}/insights"
+      val period = "day"
+
+      val maybeInsights = FB.get[Insight](connection, dateParameters, period, fbClient)
+      maybeInsights foreach (insights => FacebookPageInsightsCache.put(cacheKey, insights))
+
+      maybeInsights
+    }
+
   }
 
 }

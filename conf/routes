@@ -3,19 +3,20 @@
 # ~~~~
 
 # Handled by client side code
-GET         /                                                             com.gu.bard.api.Application.index
+GET         /                                                             controllers.Application.index
 
 # Healthcheck
-GET        /healthcheck                                                   com.gu.bard.api.Application.healthcheck
+GET        /healthcheck                                                   controllers.Healthcheck.healthcheck
 
 # API
-GET        /api/pages                                                     com.gu.bard.api.PageInsightsApi.getPages
-GET        /api/page-insights/:pageName                                   com.gu.bard.api.PageInsightsApi.getpageInsights(pageName, from, to)
+GET        /api/pages                                                     controllers.PageInsightsApi.getPages
+GET        /api/page-insights/:pageName                                   controllers.PageInsightsApi.getpageInsights(pageName, from, to)
 
 # Auth
-GET         /login                                                        com.gu.bard.api.Auth.login
-GET         /oauth2callback                                               com.gu.bard.api.Auth.oauth2Callback
-
+GET        /login                                                         controllers.Login.login
+GET        /loginAction                                                   controllers.Login.loginAction
+GET        /oauth2callback                                                controllers.Login.oauth2Callback
+GET        /logout                                                        controllers.Login.logout
 
 # Map static resources from the /public folder to the /assets URL path
 GET        /assets/*file                                                  controllers.Assets.versioned(path="/public", file: Asset)

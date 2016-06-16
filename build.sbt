@@ -13,8 +13,8 @@ resolvers += "Sonatype releases" at "https://oss.sonatype.org/content/repositori
 libraryDependencies ++= Seq(
   ws,
   "com.restfb" % "restfb" % "1.24.0",
-  "com.gu" %% "play-googleauth" % "0.4.0",
   "org.scalactic" %% "scalactic" % "2.2.6",
+  "com.gu" %% "play-googleauth" % "0.5.0",
   "com.gu" %% "configuration-magic-play2-4" % "1.2.0",
   "com.github.ben-manes.caffeine" % "caffeine" % "1.3.3",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.1.0",

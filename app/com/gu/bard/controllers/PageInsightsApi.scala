@@ -1,4 +1,4 @@
-package com.gu.bard.api
+package controllers
 
 import com.gu.bard.models.{ ErrorResponse, _ }
 import com.gu.bard.services.PageService

@@ -44,6 +44,26 @@ object MetricSettings {
     graphDataSettings = graphDataSettings
   )
 
+  def totalNewPeopleWhoLike(graphDataSettings: GraphDataSettings) = MetricSettings(
+    title = "Total number of new page likes",
+    description = "Shows the number of people (unique) who are actively liking this page per week. Useful for observing the general health of a page.",
+    whatsSuccess = " ... ",
+    metricType = " health",
+    fbMetricName = "page_fan_adds_unique",
+    fbMetricDescription = "",
+    graphDataSettings = graphDataSettings
+  )
+
+  def totalNewPeopleWhoUnlike(graphDataSettings: GraphDataSettings) = MetricSettings(
+    title = "Total number of new page unlikes",
+    description = "Shows the number of people (unique) who are actively unliking this page per week. Useful for observing the general health of a page.",
+    whatsSuccess = " ... ",
+    metricType = "health",
+    fbMetricName = "page_fan_removes_unique",
+    fbMetricDescription = "",
+    graphDataSettings = graphDataSettings
+  )
+
 }
 
 case class MetricSettings(

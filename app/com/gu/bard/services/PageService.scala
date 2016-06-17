@@ -1,5 +1,6 @@
 package com.gu.bard.services
 
+import com.gu.bard.metrics.{ InsightMetrics, PostMetrics }
 import com.gu.bard.models.{ DateParameters, FacebookPageConfig, Page }
 import com.gu.bard.settings.PageInsightsPageSettings
 import com.gu.bard.stores.{ FacebookPageInsights, FacebookPosts }
@@ -22,9 +23,11 @@ object PageService {
       Page(
         prettyPageName = pageSettings.prettyPageName,
         metrics = Seq(
-          Metrics.averagePostsPerDay(metricSettings, posts, weekRanges),
-          Metrics.totalPostsPerDay(metricSettings, posts, weekRanges),
-          Metrics.totalPostLikeReactions(metricSettings, pageInsights, weekRanges)
+          PostMetrics.averagePostsPerDay(metricSettings, posts, weekRanges),
+          PostMetrics.totalPostsPerDay(metricSettings, posts, weekRanges),
+          InsightMetrics.totalPostLikeReactions(metricSettings, pageInsights, weekRanges),
+          InsightMetrics.totalNewPeopleWhoLike(metricSettings, pageInsights, weekRanges),
+          InsightMetrics.totalNewPeopleWhoUnlike(metricSettings, pageInsights, weekRanges)
         ).flatten
       )
     }

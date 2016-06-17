@@ -18,7 +18,17 @@ object PageInsightsPageSettings {
     MetricSettings.totalLikesCommentsShares(GraphDataSettings(
       `type` = "line",
       axisXLabel = "Date",
-      axisYLabel = "No of Likes ..."
+      axisYLabel = "No of Shares"
+    )),
+    MetricSettings.totalNewPeopleWhoLike(GraphDataSettings(
+      `type` = "line",
+      axisXLabel = "Date",
+      axisYLabel = "No of Likes"
+    )),
+    MetricSettings.totalNewPeopleWhoUnlike(GraphDataSettings(
+      `type` = "line",
+      axisXLabel = "Date",
+      axisYLabel = "No of Unlikes"
     ))
   )
 

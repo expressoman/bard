@@ -2,6 +2,10 @@
   "name": "bard",
   "version": "0.0.1",
   "description": "Bard - Telling the story of Facebook page performance.",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/guardian/bard.git"
+  },
   "dependencies": {
     "babel-core": "^6.0.20",
     "babel-loader": "^6.0.1",
@@ -19,6 +23,7 @@
     "react-chartist": "^0.10.2",
     "react-dom": "^0.14.8",
     "react-router": "^1.0.0",
+    "react-loader": "^2.4.0",
     "reqwest": "^2.0.5",
     "webpack": "^1.12.11"
   },

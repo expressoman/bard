@@ -1,5 +1,7 @@
 import React from 'react';
 import Metric from "./metric.react";
+import PageNavigation from "./pageNavigation.react";
+
 
 export default class Page extends React.Component {
 
@@ -18,9 +20,8 @@ export default class Page extends React.Component {
             <div className="page-wrapper">
                 <div className="container-fluid">
                     <div className="row">
+                        <PageNavigation data={this.props.data} />
                         <div className="col-md-3">
-                            <h3><span className="label label-default">{this.props.data.prettyPageName}</span></h3>
-                            <br/>
                         </div>
                         <div className="col-md-3">
                         </div>

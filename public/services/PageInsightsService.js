@@ -1,4 +1,6 @@
 import Reqwest from 'reqwest';
+import TimeframeService from '../services/TimeframeService'
+
 
 export default {
 
@@ -10,9 +12,12 @@ export default {
         })
     },
     
-    getPageInsights:(page, from, to) => {
+    getPageInsights:(page, timeframe) => {
+
+        const timeframeDates = TimeframeService.getToFromDates(timeframe);
+        
         return Reqwest({
-            url: '/api/page-insights/' + page + '?from=2016-04-25&to=2016-06-12', // TODO handle from/to params
+            url: '/api/page-insights/' + page + '?from=' + timeframeDates.from + '&to=' + timeframeDates.to,
             contentType: 'text/json',
             method: 'get'
         })

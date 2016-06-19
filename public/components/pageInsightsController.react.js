@@ -15,19 +15,19 @@ export default class PageInsightsController extends React.Component {
     }
 
     componentDidMount() {
-        this.loadPageInsights(this.props.params.page, '', ''); // TODO - provide timeframe
+        this.loadPageInsights(this.props.params.page, this.props.params.timeframe);
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props.params.page !== nextProps.params.page) {
-            this.loadPageInsights(nextProps.params.page, '', ''); // TODO - provide timeframe
+        if (this.props.params !== nextProps.params) {
+            this.loadPageInsights(nextProps.params.page, nextProps.params.timeframe);
         }
     }
 
-    loadPageInsights(page, from, to) {
+    loadPageInsights(page, timeframe) {
         /* Means spinner will show when changing between page insight pages. */
         this.setState({loaded: false, pageInsightsData: this.state.pageInsightsData});
-        PageInsightsService.getPageInsights(page, from, to).then( response => {
+        PageInsightsService.getPageInsights(page, timeframe).then( response => {
             this.setState({loaded: true, pageInsightsData: response});
         });
     }

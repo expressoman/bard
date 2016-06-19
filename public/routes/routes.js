@@ -6,7 +6,7 @@ import PageInsightsController from '../components/pageInsightsController.react';
 
 export default [
     <Route path="/" component={ReactApp}>
-        <Route name="pageinsights" path="/page-insights/:page" component={PageInsightsController} />
+        <Route name="pageinsights" path="/page-insights/:page/:timeframe" component={PageInsightsController} />
         <IndexRoute component={Home}/>
     </Route>
 ];

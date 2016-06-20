@@ -22,6 +22,7 @@ object PageService {
     } yield {
       Page(
         prettyPageName = pageSettings.prettyPageName,
+        fbPageName = fbPageConfig.name,
         metrics = Seq(
           PostMetrics.averagePostsPerDay(metricSettings, posts, weekRanges),
           PostMetrics.totalPostsPerDay(metricSettings, posts, weekRanges),

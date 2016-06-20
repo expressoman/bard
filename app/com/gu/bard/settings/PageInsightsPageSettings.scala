@@ -42,6 +42,11 @@ object PageInsightsPageSettings {
     "guardian-technology" -> PageSettings(
       prettyPageName = "Guardian Technology",
       metricSettings = metricSettings
+    ),
+
+    "the-guardian" -> PageSettings(
+      prettyPageName = "The Guardian",
+      metricSettings = metricSettings
     )
   )
 }

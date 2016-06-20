@@ -14,9 +14,9 @@ object FacebookPageInsights extends StrictLogging {
     FacebookPageInsightsCache.get(cacheKey) orElse {
       val fbClient = FB(fbPageConfig.accessToken)
       val connection = s"${fbPageConfig.id}/insights"
-      val period = "day"
+      val period = Some("day")
 
-      val maybeInsights = FB.get[Insight](connection, dateParameters, period, fbClient)
+      val maybeInsights = FB.getData[Insight](connection, dateParameters, period, fbClient)
       maybeInsights foreach (insights => FacebookPageInsightsCache.put(cacheKey, insights))
 
       maybeInsights

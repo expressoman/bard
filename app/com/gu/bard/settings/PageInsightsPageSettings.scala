@@ -5,11 +5,6 @@ case class PageSettings(prettyPageName: String, metricSettings: Seq[MetricSettin
 object PageInsightsPageSettings {
 
   private val metricSettings = Seq(
-    MetricSettings.averagePosts(GraphDataSettings(
-      `type` = "line",
-      axisXLabel = "Date",
-      axisYLabel = "No of posts"
-    )),
     MetricSettings.totalPosts(GraphDataSettings(
       `type` = "bar",
       axisXLabel = "Date",

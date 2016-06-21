@@ -14,16 +14,6 @@ object MetricSettings {
 
   implicit val metricSettingsFormats = Json.format[MetricSettings]
 
-  def averagePosts(graphDataSettings: GraphDataSettings) = MetricSettings(
-    title = "Average Posts Per Day",
-    description = "Shows how much content we're publishing each week. Publishing should be consistent as the number of posts will affect audience growth.",
-    whatsSuccess = " ... ",
-    metricType = "promotion", // TODO - should be enum
-    fbMetricName = "average_posts",
-    fbMetricDescription = "",
-    graphDataSettings = graphDataSettings
-  )
-
   def totalPosts(graphDataSettings: GraphDataSettings) = MetricSettings(
     title = "Total Posts Per Week",
     description = "Shows how much content we're publishing each week. Publishing should be consistent as the number of posts will affect audience growth.",

@@ -24,7 +24,6 @@ object PageService {
         prettyPageName = pageSettings.prettyPageName,
         fbPageName = fbPageConfig.name,
         metrics = Seq(
-          PostMetrics.averagePostsPerDay(metricSettings, posts, weekRanges),
           PostMetrics.totalPostsPerDay(metricSettings, posts, weekRanges),
           InsightMetrics.totalPostLikeReactions(metricSettings, pageInsights, weekRanges),
           InsightMetrics.totalNewPeopleWhoLike(metricSettings, pageInsights, weekRanges),

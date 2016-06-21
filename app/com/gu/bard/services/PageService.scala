@@ -24,10 +24,10 @@ object PageService {
         prettyPageName = pageSettings.prettyPageName,
         fbPageName = fbPageConfig.name,
         metrics = Seq(
-          PostMetrics.totalPostsPerDay(metricSettings, posts, weekRanges),
           InsightMetrics.totalPostLikeReactions(metricSettings, pageInsights, weekRanges),
           InsightMetrics.totalNewPeopleWhoLike(metricSettings, pageInsights, weekRanges),
-          InsightMetrics.totalNewPeopleWhoUnlike(metricSettings, pageInsights, weekRanges)
+          InsightMetrics.totalNewPeopleWhoUnlike(metricSettings, pageInsights, weekRanges),
+          PostMetrics.totalPostsPerDay(metricSettings, posts, weekRanges)
         ).flatten
       )
     }

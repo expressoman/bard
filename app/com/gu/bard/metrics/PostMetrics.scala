@@ -11,17 +11,6 @@ import com.typesafe.scalalogging.StrictLogging
  */
 object PostMetrics extends StrictLogging with Graphing {
 
-  def averagePostsPerDay(metricSettings: Seq[MetricSettings], posts: Seq[Post], weekRanges: Seq[WeekRange]): Option[Metric] = {
-    val fbMetricName = "average_posts" // TODO - Move to constants
-    def average(data: Seq[Post]) = (data.size.toFloat / 7).toString
-
-    val graphData: Seq[GraphDataValue] =
-      graphDataValues[Post, Long](weekRanges, posts)(dateSource(_))(average(_))
-
-    getMetric(fbMetricName, metricSettings, graphData)
-
-  }
-
   def totalPostsPerDay(metricSettings: Seq[MetricSettings], posts: Seq[Post], weekRanges: Seq[WeekRange]): Option[Metric] = {
     val fbMetricName = "total_posts"
     def total(data: Seq[Post]) = data.size.toString

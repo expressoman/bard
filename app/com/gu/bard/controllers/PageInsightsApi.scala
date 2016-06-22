@@ -12,7 +12,6 @@ class PageInsightsApi(pages: Seq[String], fbPageConfig: Map[String, FacebookPage
     Ok(Json.toJson(FacebookPages(pages)))
   }
 
-  // TODO - This is pretty much the same now as in PostGraphs and can probably be extracted into Graphing.
   def getpageInsights(pageName: String, from: String, to: String) = Action {
 
     DateParameters(from, to) match {
@@ -21,11 +20,10 @@ class PageInsightsApi(pages: Seq[String], fbPageConfig: Map[String, FacebookPage
         (for {
           config <- fbPageConfig.get(pageName)
           page <- PageService.getPageInsightsPage(dp, config)
-        } yield page) map { page =>
-          Ok(Json.toJson(page))
-        } getOrElse {
-          NotFound(s"Could not retrieve page insights for page: $pageName")
-        }
+        } yield Ok(Json.toJson(page)))
+          .getOrElse {
+            NotFound(s"Could not retrieve page insights for page: $pageName")
+          }
 
       case Bad(error) => BadRequest(Json.toJson(ErrorResponse(error.message)))
 

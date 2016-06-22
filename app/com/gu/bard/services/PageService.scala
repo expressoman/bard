@@ -1,6 +1,6 @@
 package com.gu.bard.services
 
-import com.gu.bard.metrics.{ InsightMetrics, PostMetrics }
+import com.gu.bard.metrics.{ PageInsightGraphs, PostGraphs }
 import com.gu.bard.models.{ DateParameters, FacebookPageConfig, Page }
 import com.gu.bard.settings.PageInsightsPageSettings
 import com.gu.bard.stores.{ FacebookPageInsights, FacebookPosts }
@@ -12,22 +12,37 @@ import com.gu.bard.stores.{ FacebookPageInsights, FacebookPosts }
 object PageService {
 
   def getPageInsightsPage(dateParameters: DateParameters, fbPageConfig: FacebookPageConfig): Option[Page] = {
+
+    val maybePageSettings = PageInsightsPageSettings.config.get(fbPageConfig.name)
+    val maybeGraphSettings = maybePageSettings.map(_.graphSettings)
     val weekRanges = DateRangeGenerator.generateWeekRanges(startDate = dateParameters.from, endDate = dateParameters.to)
 
-    for {
+    val maybePageInsightsGraphs = for {
       pageInsights <- FacebookPageInsights.getPageInsights(dateParameters, fbPageConfig)
+      graphSettings <- maybeGraphSettings
+    } yield {
+      new PageInsightGraphs(graphSettings, pageInsights, weekRanges)
+    }
+
+    val maybePostGraphs = for {
       posts <- FacebookPosts.getPosts(dateParameters, fbPageConfig)
-      pageSettings <- PageInsightsPageSettings.config.get(fbPageConfig.name)
-      metricSettings = pageSettings.metricSettings
+      graphSettings <- maybeGraphSettings
+    } yield {
+      new PostGraphs(graphSettings, posts, weekRanges)
+    }
+
+    for {
+      pageInsightsGraphs <- maybePageInsightsGraphs
+      postGraphs <- maybePostGraphs
+      pageSettings <- maybePageSettings
     } yield {
       Page(
         prettyPageName = pageSettings.prettyPageName,
         fbPageName = fbPageConfig.name,
-        metrics = Seq(
-          InsightMetrics.totalPostLikeReactions(metricSettings, pageInsights, weekRanges),
-          InsightMetrics.totalNewPeopleWhoLike(metricSettings, pageInsights, weekRanges),
-          InsightMetrics.totalNewPeopleWhoUnlike(metricSettings, pageInsights, weekRanges),
-          PostMetrics.totalPostsPerDay(metricSettings, posts, weekRanges)
+        graphs = Seq(
+          pageInsightsGraphs.combinedGraphs.totalNewPeopleWhoLikeAndUnlike,
+          pageInsightsGraphs.totalPostLikeReactions,
+          postGraphs.totalPostsPerDay
         ).flatten
       )
     }

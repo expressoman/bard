@@ -12,6 +12,7 @@ class PageInsightsApi(pages: Seq[String], fbPageConfig: Map[String, FacebookPage
     Ok(Json.toJson(FacebookPages(pages)))
   }
 
+  // TODO - This is pretty much the same now as in PostGraphs and can probably be extracted into Graphing.
   def getpageInsights(pageName: String, from: String, to: String) = Action {
 
     DateParameters(from, to) match {

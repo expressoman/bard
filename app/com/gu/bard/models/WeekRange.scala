@@ -1,4 +1,4 @@
-package com.gu.bard.services
+package com.gu.bard.models
 
 import org.joda.time.LocalDate
 

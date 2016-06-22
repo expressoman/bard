@@ -1,7 +1,6 @@
 package com.gu.bard.metrics
 
-import com.gu.bard.models.GraphDataValue
-import com.gu.bard.services.WeekRange
+import com.gu.bard.models.{ GraphDataValue, WeekRange }
 import org.joda.time.DateTime
 
 trait Graphing {

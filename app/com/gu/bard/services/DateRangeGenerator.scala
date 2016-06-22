@@ -1,6 +1,8 @@
 package com.gu.bard.services
 
+import com.gu.bard.models.WeekRange
 import org.joda.time.LocalDate
+
 import scala.annotation.tailrec
 
 object DateRangeGenerator {

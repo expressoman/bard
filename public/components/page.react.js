@@ -1,5 +1,5 @@
 import React from 'react';
-import Metric from "./metric.react";
+import Graph from "./graph.react.js";
 import PageNavigation from "./pageNavigation.react";
 
 
@@ -12,8 +12,9 @@ export default class Page extends React.Component {
     render() {
         if (!this.props) { return false };
 
-        const metrics = this.props.data.metrics.map( metric => {
-            return <Metric key={metric.metricSettings.fbMetricName} data={metric} />
+        const graphs = this.props.data.graphs.map( graph => {
+            let key = graph.metrics[0].metricSettings.fbMetricName;
+            return <Graph key={key} data={graph} />
         });
 
         return (
@@ -31,7 +32,7 @@ export default class Page extends React.Component {
                         </div>
                     </div>
                     <div className="row">
-                        {metrics}
+                        {graphs}
                     </div>
                 </div>
             </div>

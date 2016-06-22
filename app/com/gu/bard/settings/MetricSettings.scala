@@ -2,10 +2,7 @@ package com.gu.bard.settings
 
 import play.api.libs.json.Json
 
-case class GraphDataSettings(`type`: String, axisXLabel: String, axisYLabel: String)
-object GraphDataSettings {
-  implicit val graphDataSettingsFormats = Json.format[GraphDataSettings]
-}
+case class MetricSettings(metricType: String, fbMetricName: String)
 
 /**
  * contains the settings for all metrics used across the application, allowing them to be configurable and reusable, held in a single place.
@@ -14,54 +11,24 @@ object MetricSettings {
 
   implicit val metricSettingsFormats = Json.format[MetricSettings]
 
-  def totalPosts(graphDataSettings: GraphDataSettings) = MetricSettings(
-    title = "Total Posts Per Week",
-    description = "Shows how much content we're publishing each week. Publishing should be consistent as the number of posts will affect audience growth.",
-    whatsSuccess = " ... ",
+  def totalPosts = MetricSettings(
     metricType = "content_effectiveness",
-    fbMetricName = "total_posts",
-    fbMetricDescription = "",
-    graphDataSettings = graphDataSettings
+    fbMetricName = "total_posts"
   )
 
-  def totalLikesCommentsShares(graphDataSettings: GraphDataSettings) = MetricSettings(
-    title = "Total Likes/Comments/Shares",
-    description = "As we optimise our articles on Facebook we should see an increase in the number of likes per post.",
-    whatsSuccess = " ... ",
+  def totalLikesCommentsShares = MetricSettings(
     metricType = "content_effectiveness",
-    fbMetricName = "page_actions_post_reactions_like_total",
-    fbMetricDescription = "",
-    graphDataSettings = graphDataSettings
+    fbMetricName = "page_actions_post_reactions_like_total"
   )
 
-  def totalNewPeopleWhoLike(graphDataSettings: GraphDataSettings) = MetricSettings(
-    title = "Total number of new page likes",
-    description = "Shows the number of people (unique) who are actively liking this page per week. Useful for observing the general health of a page.",
-    whatsSuccess = " ... ",
+  def totalNewPeopleWhoLike = MetricSettings(
     metricType = " health",
-    fbMetricName = "page_fan_adds_unique",
-    fbMetricDescription = "",
-    graphDataSettings = graphDataSettings
+    fbMetricName = "page_fan_adds_unique"
   )
 
-  def totalNewPeopleWhoUnlike(graphDataSettings: GraphDataSettings) = MetricSettings(
-    title = "Total number of new page unlikes",
-    description = "Shows the number of people (unique) who are actively unliking this page per week. Useful for observing the general health of a page.",
-    whatsSuccess = " ... ",
+  def totalNewPeopleWhoUnlike = MetricSettings(
     metricType = "health",
-    fbMetricName = "page_fan_removes_unique",
-    fbMetricDescription = "",
-    graphDataSettings = graphDataSettings
+    fbMetricName = "page_fan_removes_unique"
   )
 
 }
-
-case class MetricSettings(
-  title: String,
-  description: String,
-  whatsSuccess: String,
-  metricType: String,
-  fbMetricName: String,
-  fbMetricDescription: String,
-  graphDataSettings: GraphDataSettings
-)

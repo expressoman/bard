@@ -1,8 +1,8 @@
 package com.gu.bard.metrics
 
-import com.gu.bard.models.{ Graph, GraphDataValue, Metric, WeekRange }
-import com.gu.bard.settings.{ GraphSettings, MetricSettings }
+import com.gu.bard.settings.{GraphSettings, MetricSettings}
 import com.typesafe.scalalogging.StrictLogging
+import com.gu.bard.models.{Graph, GraphDataValue, Metric, WeekRange}
 import org.joda.time.DateTime
 
 trait Graphing extends StrictLogging {

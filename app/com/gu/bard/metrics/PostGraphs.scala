@@ -2,8 +2,7 @@ package com.gu.bard.metrics
 
 import com.gu.bard.models._
 import com.gu.bard.settings.{ GraphSettings, MetricSettings }
-import com.restfb.json.JsonObject
-import com.restfb.types.{ Insight, Post }
+import com.restfb.types.{ Post }
 import com.typesafe.scalalogging.StrictLogging
 
 /**

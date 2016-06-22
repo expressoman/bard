@@ -1,6 +1,7 @@
 import React from 'react';
 import ChartistGraph from 'react-chartist';
 import ChartistAxisTitle from 'chartist-plugin-axistitle';
+import ChartService from '../../services/ChartService'
 
 export default class Linechart extends React.Component {
 
@@ -12,9 +13,10 @@ export default class Linechart extends React.Component {
         if (!this.props) { return false };
 
         const graphData = this.props.data;
+        const labels = ChartService.labels(graphData);
 
         const lineChartData = {
-            labels: graphData.values.map( dataValues => { return dataValues.label }),
+            labels: labels,
             series: [ graphData.values.map( dataValues => { return dataValues.dataPoint }) ]
         };
 

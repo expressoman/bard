@@ -25,6 +25,11 @@ class PageInsightGraphs(graphSettingsMap: Map[String, GraphSettings], pageInsigh
       getGraph(graphSettingsMap.get(GraphSettingsKey))
     }
 
+    def postsImpressionsTotalAndUnique: Option[Graph] = {
+      val GraphSettingsKey = "postsImpressionsTotalAndUnique"
+      getGraph(graphSettingsMap.get(GraphSettingsKey))
+    }
+
   }
 
   override def createMetric(metricName: String, metricSettings: MetricSettings) = {

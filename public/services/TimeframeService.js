@@ -11,9 +11,9 @@ export default {
             return Moment().startOf('isoweek').subtract(minusWeeks, 'week').format('YYYY-MM-DD')
         }
 
-        const matchedTimeframe = timeframes.filter( timeframe => {
-            return timeframeValue === timeframe.queryParamValue
-        });
+        const matchedTimeframe = timeframes.filter( timeframe =>
+            timeframeValue === timeframe.queryParamValue
+        );
         
         const timeframe = R.defaultTo('', R.head(matchedTimeframe));
 

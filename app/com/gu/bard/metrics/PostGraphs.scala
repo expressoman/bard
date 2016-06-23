@@ -13,34 +13,12 @@ class PostGraphs(graphSettingsMap: Map[String, GraphSettings], posts: Seq[Post],
 
   def totalPostsPerDay: Option[Graph] = {
     val GraphSettingsKey = "totalPosts"
-    getGraph(GraphSettingsKey)
+    getGraph(graphSettingsMap.get(GraphSettingsKey))
   }
 
-  // TODO - This is pretty much the same now as in PageInsightsGraphs.
-  private def getGraph(graphSettingsKey: String, graphDataFn: Seq[Post] => Seq[GraphDataValue] = this.graphDataFn) = {
-
-    def createMetric(metricName: String, metricSettings: MetricSettings) = {
-      val graphData = GraphData(values = graphDataFn(posts))
-      Metric(metricSettings, graphData)
-    }
-
-    val maybeGraph = graphSettingsMap.get(graphSettingsKey) map { graphSettings =>
-      val metricNames = graphSettings.metricSettings.map(_.fbMetricName)
-
-      val metrics = metricNames flatMap { metricName =>
-        graphSettings.metricSettings
-          .find(_.fbMetricName == metricName)
-          .map { metricSettings => createMetric(metricName, metricSettings) }
-      }
-
-      Graph.create(graphSettings, metrics)
-    }
-
-    maybeGraph orElse {
-      logger.warn(s"Could not retrieve graph with graphSettingKey: $graphSettingsKey")
-      None
-    }
-
+  override def createMetric(metricName: String, metricSettings: MetricSettings) = {
+    val graphData = GraphData(values = graphDataFn(posts))
+    Metric(metricSettings, graphData)
   }
 
   private def graphDataFn: Seq[Post] => Seq[GraphDataValue] = {

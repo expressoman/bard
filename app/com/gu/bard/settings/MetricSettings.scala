@@ -31,4 +31,13 @@ object MetricSettings {
     fbMetricName = "page_fan_removes_unique"
   )
 
+  def totalPostsImpressions = MetricSettings(
+    metricType = "content_effectiveness",
+    fbMetricName = "page_impressions"
+  )
+
+  def totalPostsImpressionsUnique = MetricSettings(
+    metricType = "content_effectiveness",
+    fbMetricName = "page_impressions_unique"
+  )
 }

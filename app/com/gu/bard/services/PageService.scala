@@ -42,6 +42,7 @@ object PageService {
         graphs = Seq(
           pageInsightsGraphs.combinedGraphs.totalNewPeopleWhoLikeAndUnlike,
           pageInsightsGraphs.totalPostLikeReactions,
+          pageInsightsGraphs.combinedGraphs.postsImpressionsTotalAndUnique,
           postGraphs.totalPostsPerDay
         ).flatten
       )

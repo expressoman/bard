@@ -31,6 +31,15 @@ object PageInsightsPageSettings {
       axisXLabel = "Date",
       axisYLabel = "No of Likes/Unlikes",
       Seq(MetricSettings.totalNewPeopleWhoLike, MetricSettings.totalNewPeopleWhoUnlike)
+    ),
+    "postsImpressionsTotalAndUnique" -> GraphSettings(
+      title = "Total number of impressions for the page",
+      description = "Shows the total number of posts impressions and unique posts impressions",
+      whatsSuccess = " ... ",
+      `type` = "line",
+      axisXLabel = "Date",
+      axisYLabel = "No of Impressions",
+      Seq(MetricSettings.totalPostsImpressions, MetricSettings.totalPostsImpressionsUnique)
     )
   )
 

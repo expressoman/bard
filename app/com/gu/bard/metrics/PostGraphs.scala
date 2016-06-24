@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 class PostGraphs(graphSettingsMap: Map[String, GraphSettings], override val metricData: Seq[Post], override val weekRanges: Seq[WeekRange]) extends StrictLogging with Graphing[Post] {
 
   implicit object PostGraphHelper extends GraphHelper[Post, Post] {
-    def getMetricData(metricName: String): Seq[Post] = metricData
+    def getDataForMetric(metricName: String): Seq[Post] = metricData
     def dateSource(post: Post) = new DateTime(post.getCreatedTime.toInstant.toEpochMilli)
 
     def compute(computationName: String): Seq[Post] => String = {

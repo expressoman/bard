@@ -8,7 +8,7 @@ import org.joda.time.DateTime
 trait Graphing[T] extends StrictLogging {
 
   trait GraphHelper[A, U] {
-    def getMetricData(metricName: String): Seq[U]
+    def getDataForMetric(metricName: String): Seq[U]
     def dateSource(u: U): DateTime
     def compute(computationName: String): Seq[U] => String
   }
@@ -21,7 +21,7 @@ trait Graphing[T] extends StrictLogging {
     metricSettings: MetricSettings,
     computationName: String
   )(implicit gh: GraphHelper[T, U]) = {
-    val dataForMetric = gh.getMetricData(metricName)
+    val dataForMetric = gh.getDataForMetric(metricName)
     val values = graphDataValues[T, U](dataForMetric, computationName)
 
     Metric(metricSettings, GraphData(values))

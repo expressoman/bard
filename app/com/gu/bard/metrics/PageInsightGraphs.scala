@@ -15,7 +15,7 @@ import scala.collection.JavaConverters._
 class PageInsightGraphs(graphSettingsMap: Map[String, GraphSettings], override val metricData: Seq[Insight], override val weekRanges: Seq[WeekRange]) extends StrictLogging with Graphing[Insight] {
 
   implicit object PageInsightsGraphHelper extends GraphHelper[Insight, JsonObject] {
-    def getMetricData(metricName: String): Seq[JsonObject] =
+    def getDataForMetric(metricName: String): Seq[JsonObject] =
       metricData.find(_.getName == metricName).map(_.getValues.asScala.toList).toList.flatten
 
     def dateSource(json: JsonObject) = new DateTime(json.getString("end_time"))

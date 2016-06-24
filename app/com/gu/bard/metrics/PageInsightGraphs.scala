@@ -6,15 +6,17 @@ import com.restfb.json.JsonObject
 import com.restfb.types.Insight
 import com.typesafe.scalalogging.StrictLogging
 import org.joda.time.DateTime
-
+import com.gu.bard.metrics.Graphing._
 import scala.collection.JavaConverters._
 
 /**
  * Provides functions for the computation of Insight metrics in graph form for rendering.
  */
-class PageInsightGraphs(graphSettingsMap: Map[String, GraphSettings], override val metricData: Seq[Insight], override val weekRanges: Seq[WeekRange]) extends StrictLogging with Graphing[Insight] {
+class PageInsightGraphs(graphSettingsMap: Map[String, GraphSettings], val metricData: Seq[Insight], val weekRanges: Seq[WeekRange]) extends StrictLogging {
 
   implicit object PageInsightsGraphHelper extends GraphHelper[Insight, JsonObject] {
+    val graphWeekRanges: Seq[WeekRange] = weekRanges
+
     def getDataForMetric(metricName: String): Seq[JsonObject] =
       metricData.find(_.getName == metricName).map(_.getValues.asScala.toList).toList.flatten
 

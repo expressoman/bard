@@ -10,15 +10,18 @@ case class Graph(
   `type`: String,
   axisXLabel: String,
   axisYLabel: String,
-  metrics: Seq[Metric]
-) // If a graph has more than one metric associated it with it, we assume that the
-// two metrics have the same labels for each datapoint.
+  low: Float,
+  metrics: Seq[Metric] // If a graph has more than one metric associated with it,
+// we assume that the two metrics have the same labels for each datapoint.
+)
 
 object Graph {
   implicit val graphFormats = Json.format[Graph]
 
   def create(graphSettings: GraphSettings, metrics: Seq[Metric]): Graph = {
+    val low: Float = metrics.flatMap(_.graphData.values.map(_.dataPoint.toFloat)).min
+
     Graph(graphSettings.title, graphSettings.description, graphSettings.whatsSuccess, graphSettings.`type`, graphSettings.axisXLabel,
-      graphSettings.axisYLabel, metrics)
+      graphSettings.axisYLabel, low, metrics)
   }
 }

@@ -25,7 +25,7 @@ export default class Barchart extends React.Component {
         };
 
         const barChartOptions = {
-            low: 0,
+            low: graph.low,
             chartPadding: {top: 20, right: 20, bottom: 20, left: 20 },
             axisY: { onlyInteger: true },
             plugins: [

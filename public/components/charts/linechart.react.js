@@ -1,6 +1,7 @@
 import React from 'react';
 import ChartistGraph from 'react-chartist';
 import ChartistAxisTitle from 'chartist-plugin-axistitle';
+import ChartistPluginLegend from 'chartist-plugin-legend';
 import ChartService from '../../services/ChartService'
 
 export default class Linechart extends React.Component {
@@ -44,6 +45,9 @@ export default class Linechart extends React.Component {
                         textAnchor: 'middle',
                         flipTitle: false
                     }
+                }),
+                ChartistPluginLegend({
+                    legendNames: graph.metrics.map(metric => metric.metricSettings.fbMetricName ),
                 })
             ]
         };

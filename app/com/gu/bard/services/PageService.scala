@@ -17,11 +17,18 @@ object PageService {
     val maybeGraphSettings = maybePageSettings.map(_.graphSettings)
     val weekRanges = DateRangeGenerator.generateWeekRanges(startDate = dateParameters.from, endDate = dateParameters.to)
 
-    val maybePageInsightsGraphs = for {
-      pageInsights <- FacebookPageInsights.getPageInsights(dateParameters, fbPageConfig)
+    val maybePageInsightsGraphsForDay = for {
+      pageInsightsDay <- FacebookPageInsights.getPageInsightsForDay(dateParameters, fbPageConfig)
       graphSettings <- maybeGraphSettings
     } yield {
-      new PageInsightGraphs(graphSettings, pageInsights, weekRanges)
+      new PageInsightGraphs(graphSettings, pageInsightsDay, weekRanges)
+    }
+
+    val maybePageInsightsGraphsForLifeTime = for {
+      pageInsightsLifetime <- FacebookPageInsights.getPageInsightsForLifetime(dateParameters, fbPageConfig)
+      graphSettings <- maybeGraphSettings
+    } yield {
+      new PageInsightGraphs(graphSettings, pageInsightsLifetime, weekRanges)
     }
 
     val maybePostGraphs = for {
@@ -32,7 +39,8 @@ object PageService {
     }
 
     for {
-      pageInsightsGraphs <- maybePageInsightsGraphs
+      pageInsightsGraphsForDay <- maybePageInsightsGraphsForDay
+      pageInsightsGraphsForLifetime <- maybePageInsightsGraphsForLifeTime
       postGraphs <- maybePostGraphs
       pageSettings <- maybePageSettings
     } yield {
@@ -40,10 +48,11 @@ object PageService {
         prettyPageName = pageSettings.prettyPageName,
         fbPageName = fbPageConfig.name,
         graphs = Seq(
-          pageInsightsGraphs.combinedGraphs.totalNewPeopleWhoLikeAndUnlike,
-          pageInsightsGraphs.totalPostLikeReactions,
-          pageInsightsGraphs.combinedGraphs.postsImpressionsTotalAndUnique,
-          postGraphs.totalPostsPerDay
+          pageInsightsGraphsForLifetime.totalPageFans,
+          postGraphs.totalPostsPerDay,
+          pageInsightsGraphsForDay.combinedGraphs.totalNewPeopleWhoLikeAndUnlike,
+          pageInsightsGraphsForDay.combinedGraphs.postsImpressionsTotalAndUnique,
+          pageInsightsGraphsForDay.totalPostLikeReactions
         ).flatten
       )
     }

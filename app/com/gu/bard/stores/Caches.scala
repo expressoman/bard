@@ -9,7 +9,7 @@ import com.restfb.types.{ Insight, Post }
 import scala.collection.JavaConverters._
 
 trait CacheKey {
-  def key(fbPageName: String, dp: DateParameters) = s"$fbPageName-${dp.from}-${dp.to}".hashCode
+  def key(fbPageName: String, dp: DateParameters, period: String) = s"$fbPageName-${dp.from}-${dp.to}-$period".hashCode
 }
 
 trait FacebookPageInsightsCache {

@@ -1,40 +1,62 @@
 package com.gu.bard.metrics
 
-import com.gu.bard.models.{ Graph, GraphDataValue, Metric, WeekRange }
 import com.gu.bard.settings.{ GraphSettings, MetricSettings }
 import com.typesafe.scalalogging.StrictLogging
+import com.gu.bard.models._
 import org.joda.time.DateTime
 
-trait Graphing extends StrictLogging {
+trait GraphHelper[A, U] {
+  val graphWeekRanges: Seq[WeekRange]
+  def getDataForMetric(metricName: String): Seq[U]
+  def dateSource(u: U): DateTime
+  def compute(computationName: String): Seq[U] => String
+}
 
-  def createMetric(metricName: String, metricSettings: MetricSettings): Metric
+object Graphing extends StrictLogging {
 
-  def getGraph(maybeGraphSettings: Option[GraphSettings]) = {
+  private def createMetric[A, U](
+    metricName: String,
+    metricSettings: MetricSettings,
+    computationName: String
+  )(implicit gh: GraphHelper[A, U]) = {
+    val dataForMetric = gh.getDataForMetric(metricName)
+    val values = graphDataValues[A, U](dataForMetric, computationName)
+
+    Metric(metricSettings, GraphData(values))
+  }
+
+  def getGraph[A, U](
+    maybeGraphSettings: Option[GraphSettings],
+    computationName: String
+  )(implicit gh: GraphHelper[A, U]) = {
     maybeGraphSettings map { graphSettings =>
-      Graph.create(graphSettings, getMetricsForGraph(graphSettings))
+      Graph.create(graphSettings, getMetricsForGraph(graphSettings, computationName))
     } orElse {
       logger.warn(s"Could not retrieve graph.")
       None
     }
   }
 
-  def graphDataValues[T, U](weekRanges: Seq[WeekRange], data: Seq[T])(dateSource: T => U)(compute: Seq[T] => String): Seq[GraphDataValue] = {
+  private def graphDataValues[A, U](dataForMetric: Seq[U], computationName: String)(implicit gh: GraphHelper[A, U]): Seq[GraphDataValue] = {
 
-    def inThisWeek(range: WeekRange, t: T) = range.isInThisWeek(date = new DateTime(dateSource(t)).toLocalDate)
+    def inThisWeek(range: WeekRange, u: U) = range.isInThisWeek(date = gh.dateSource(u).toLocalDate)
 
-    weekRanges map { range =>
-      val dataForWeek = data.filter { datum => inThisWeek(range, datum) }
-      GraphDataValue((compute(dataForWeek)).toString, range.toString)
+    gh.graphWeekRanges map { range =>
+      val dataForWeek = dataForMetric.filter { datum => inThisWeek(range, datum) }
+      GraphDataValue((gh.compute(computationName)(dataForWeek)).toString, range.toString)
     }
   }
 
-  private def getMetricsForGraph(graphSettings: GraphSettings): Seq[Metric] = {
+  private def getMetricsForGraph[A, U](
+    graphSettings: GraphSettings,
+    computationName: String
+  )(implicit gh: GraphHelper[A, U]): Seq[Metric] = {
     val metricNames = graphSettings.metricSettings.map(_.fbMetricName)
 
     metricNames flatMap { metricName =>
       graphSettings.metricSettings
         .find(_.fbMetricName == metricName)
-        .map { metricSettings => createMetric(metricName, metricSettings) }
+        .map { metricSettings => createMetric(metricName, metricSettings, computationName) }
     }
   }
 

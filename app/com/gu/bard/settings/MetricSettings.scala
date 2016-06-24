@@ -40,4 +40,10 @@ object MetricSettings {
     metricType = "content_effectiveness",
     fbMetricName = "page_impressions_unique"
   )
+
+  def totalPageFans = MetricSettings(
+    metricType = "health",
+    fbMetricName = "page_fans"
+  )
+
 }

@@ -25,7 +25,7 @@ export default class Linechart extends React.Component {
         };
 
         const lineChartOptions = {
-            low: 0,
+            low: graph.low,
             showArea: true,
             chartPadding: {top: 20, right: 20, bottom: 20, left: 20 },
             axisY: { onlyInteger: true },

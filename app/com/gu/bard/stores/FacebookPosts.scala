@@ -9,7 +9,7 @@ import scala.collection.JavaConverters._
 object FacebookPosts extends StrictLogging {
 
   def getPosts(dateParameters: DateParameters, fbPageConfig: FacebookPageConfig): Option[Seq[Post]] = {
-    val cacheKey = FacebookPostsCache.key(fbPageConfig.name, dateParameters)
+    val cacheKey = FacebookPostsCache.key(fbPageConfig.name, dateParameters, period = "")
 
     FacebookPostsCache.get(cacheKey) orElse {
       val fbClient = FB(fbPageConfig.accessToken)

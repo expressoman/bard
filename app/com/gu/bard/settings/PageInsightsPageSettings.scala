@@ -6,7 +6,7 @@ object PageInsightsPageSettings {
 
   private val graphSettings = Map(
     "totalPosts" -> GraphSettings(
-      title = "Total Posts Per Week",
+      title = "Total posts per week",
       description = "Shows how much content we're publishing each week. Publishing should be consistent as the number of posts will affect audience growth.",
       whatsSuccess = " ... ",
       `type` = "bar",
@@ -15,7 +15,7 @@ object PageInsightsPageSettings {
       Seq(MetricSettings.totalPosts)
     ),
     "totalPostLikeReactions" -> GraphSettings(
-      title = "Total Likes/Comments/Shares",
+      title = "Total likes/comments/shares",
       description = "As we optimise our articles on Facebook we should see an increase in the number of likes per post.",
       whatsSuccess = " ... ",
       `type` = "line",
@@ -40,6 +40,15 @@ object PageInsightsPageSettings {
       axisXLabel = "Date",
       axisYLabel = "No of Impressions",
       Seq(MetricSettings.totalPostsImpressions, MetricSettings.totalPostsImpressionsUnique)
+    ),
+    "totalPageFans" -> GraphSettings(
+      title = "Lifetime total likes",
+      description = "Shows the number of people who have liked your page.",
+      whatsSuccess = " ... ",
+      `type` = "line",
+      axisXLabel = "Date",
+      axisYLabel = "No of Fans",
+      Seq(MetricSettings.totalPageFans)
     )
   )
 

@@ -10,7 +10,7 @@ export default class NavigationComponent extends React.Component {
     render () {
         
         const pages = this.props.data.map( page => {
-            let route = '/page-insights/' + page + '/last-4-weeks'; // default to last 4 weeks
+            let route = '/page-insights/' + page + '/last-four-weeks'; // default to last 4 weeks
             return (
                 <li key={page}><Link to={route}>{page}</Link></li>
             );

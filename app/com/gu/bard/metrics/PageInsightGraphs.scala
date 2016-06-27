@@ -25,7 +25,7 @@ class PageInsightGraphs(graphSettingsMap: Map[String, GraphSettings], val metric
     def compute(computationName: String): Seq[JsonObject] => String = {
       computationName match {
         case "SUM" => _.map(_.getInt("value")).sum.toString
-        case "LAST" => _.map(_.getInt("value")).last.toString
+        case "LAST" => _.map(_.getInt("value")).lastOption.getOrElse(0).toString
       }
     }
   }

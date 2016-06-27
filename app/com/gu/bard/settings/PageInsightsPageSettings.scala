@@ -49,6 +49,29 @@ object PageInsightsPageSettings {
       axisXLabel = "Date",
       axisYLabel = "No of Fans",
       Seq(MetricSettings.totalPageFans)
+    ),
+    "totalPageVideoViewsAndUnique" -> GraphSettings(
+      title = "Total number of page video views",
+      description = "Total number of times videos have been viewed for more than 3 seconds.",
+      whatsSuccess = " ... ",
+      `type` = "line",
+      axisXLabel = "Date",
+      axisYLabel = "No of views",
+      Seq(MetricSettings.totalPageVideoViews, MetricSettings.totalPageVideoViewsUnique)
+    ),
+    "totalPageVideoViewsComplete10sAnd30sAndUnique" -> GraphSettings(
+      title = "Total number of page video views (breakdown by view duration)",
+      description = "Total number of times page's videos was viewed for at least 10 or 30 seconds.",
+      whatsSuccess = " ... ",
+      `type` = "bar",
+      axisXLabel = "Date",
+      axisYLabel = "No of views",
+      Seq(
+        MetricSettings.totalPageVideoCompleteViews30s,
+        MetricSettings.totalPageVideoCompleteViews30sUnique,
+        MetricSettings.totalPageVideoCompleteViews10s,
+        MetricSettings.totalPageVideoCompleteViews10sUnique
+      )
     )
   )
 

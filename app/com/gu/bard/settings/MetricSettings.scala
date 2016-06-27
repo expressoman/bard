@@ -46,4 +46,34 @@ object MetricSettings {
     fbMetricName = "page_fans"
   )
 
+  def totalPageVideoViews = MetricSettings(
+    metricType = "content_effectiveness",
+    fbMetricName = "page_video_views"
+  )
+
+  def totalPageVideoViewsUnique = MetricSettings(
+    metricType = "content_effectiveness",
+    fbMetricName = "page_video_views_unique"
+  )
+
+  def totalPageVideoCompleteViews30s = MetricSettings(
+    metricType = "content_effectiveness",
+    fbMetricName = "page_video_complete_views_30s"
+  )
+
+  def totalPageVideoCompleteViews30sUnique = MetricSettings(
+    metricType = "content_effectiveness",
+    fbMetricName = "page_video_complete_views_30s_unique"
+  )
+
+  def totalPageVideoCompleteViews10s = MetricSettings(
+    metricType = "content_effectiveness",
+    fbMetricName = "page_video_views_10s"
+  )
+
+  def totalPageVideoCompleteViews10sUnique = MetricSettings(
+    metricType = "content_effectiveness",
+    fbMetricName = "page_video_views_10s_unique"
+  )
+
 }

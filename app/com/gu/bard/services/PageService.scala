@@ -52,6 +52,8 @@ object PageService {
           postGraphs.totalPostsPerDay,
           pageInsightsGraphsForDay.combinedGraphs.totalNewPeopleWhoLikeAndUnlike,
           pageInsightsGraphsForDay.combinedGraphs.postsImpressionsTotalAndUnique,
+          pageInsightsGraphsForDay.combinedGraphs.pageVideoViewsTotalAndUnique,
+          pageInsightsGraphsForDay.combinedGraphs.pageVideoViewsComplete10sAnd30sTotalAndUnique,
           pageInsightsGraphsForDay.totalPostLikeReactions
         ).flatten
       )

@@ -52,6 +52,16 @@ class PageInsightGraphs(graphSettingsMap: Map[String, GraphSettings], val metric
       getGraph(graphSettingsMap.get(GraphSettingsKey), "SUM")
     }
 
+    def pageVideoViewsTotalAndUnique: Option[Graph] = {
+      val GraphSettingsKey = "totalPageVideoViewsAndUnique"
+      getGraph(graphSettingsMap.get(GraphSettingsKey), "SUM")
+    }
+
+    def pageVideoViewsComplete10sAnd30sTotalAndUnique: Option[Graph] = {
+      val GraphSettingsKey = "totalPageVideoViewsComplete10sAnd30sAndUnique"
+      getGraph(graphSettingsMap.get(GraphSettingsKey), "SUM")
+    }
+
   }
 
 }

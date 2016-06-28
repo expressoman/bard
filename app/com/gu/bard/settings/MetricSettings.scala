@@ -16,9 +16,34 @@ object MetricSettings {
     fbMetricName = "total_posts"
   )
 
-  def totalLikesCommentsShares = MetricSettings(
+  def totalPostReactionLikes = MetricSettings(
     metricType = "content_effectiveness",
     fbMetricName = "page_actions_post_reactions_like_total"
+  )
+
+  def totalPostReactionLoves = MetricSettings(
+    metricType = "content_effectiveness",
+    fbMetricName = "page_actions_post_reactions_love_total"
+  )
+
+  def totalPostReactionWows = MetricSettings(
+    metricType = "content_effectiveness",
+    fbMetricName = "page_actions_post_reactions_wow_total"
+  )
+
+  def totalPostReactionHahas = MetricSettings(
+    metricType = "content_effectiveness",
+    fbMetricName = "page_actions_post_reactions_haha_total"
+  )
+
+  def totalPostReactionAngers = MetricSettings(
+    metricType = "content_effectiveness",
+    fbMetricName = "page_actions_post_reactions_anger_total"
+  )
+
+  def totalPostReactionSorrys = MetricSettings(
+    metricType = "content_effectiveness",
+    fbMetricName = "page_actions_post_reactions_sorry_total"
   )
 
   def totalNewPeopleWhoLike = MetricSettings(

@@ -54,7 +54,7 @@ object PageService {
           pageInsightsGraphsForDay.combinedGraphs.postsImpressionsTotalAndUnique,
           pageInsightsGraphsForDay.combinedGraphs.pageVideoViewsTotalAndUnique,
           pageInsightsGraphsForDay.combinedGraphs.pageVideoViewsComplete10sAnd30sTotalAndUnique,
-          pageInsightsGraphsForDay.totalPostLikeReactions
+          pageInsightsGraphsForDay.combinedGraphs.totalPostLikeReactionsBreakdown
         ).flatten
       )
     }

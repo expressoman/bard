@@ -65,3 +65,8 @@
     background-color: #453d3f;
     border-color: #453d3f;
 }
+
+.ct-legend .ct-series-5:before {
+    background-color: #9CBA7F;
+    border-color: #9CBA7F;
+}

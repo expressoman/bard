@@ -14,14 +14,21 @@ object PageInsightsPageSettings {
       axisYLabel = "No of posts",
       Seq(MetricSettings.totalPosts)
     ),
-    "totalPostLikeReactions" -> GraphSettings(
-      title = "Total likes/comments/shares",
-      description = "As we optimise our articles on Facebook we should see an increase in the number of likes per post.",
+    "totalPagePostReactionsBreakdown" -> GraphSettings(
+      title = "Total page post reactions by type",
+      description = "Shows the general reactions to page posts",
       whatsSuccess = " ... ",
-      `type` = "line",
+      `type` = "bar",
       axisXLabel = "Date",
-      axisYLabel = "No of Shares",
-      Seq(MetricSettings.totalLikesCommentsShares)
+      axisYLabel = "No of Reactions",
+      Seq(
+        MetricSettings.totalPostReactionLikes,
+        MetricSettings.totalPostReactionHahas,
+        MetricSettings.totalPostReactionLoves,
+        MetricSettings.totalPostReactionSorrys,
+        MetricSettings.totalPostReactionWows,
+        MetricSettings.totalPostReactionAngers
+      )
     ),
     "totalNewPeopleWhoLikeAndUnlike" -> GraphSettings(
       title = "Total number of new page likes/unlikes",

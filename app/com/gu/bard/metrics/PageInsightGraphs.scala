@@ -30,17 +30,17 @@ class PageInsightGraphs(graphSettingsMap: Map[String, GraphSettings], val metric
     }
   }
 
-  def totalPostLikeReactions: Option[Graph] = {
-    val GraphSettingsKey = "totalPostLikeReactions"
-    getGraph(graphSettingsMap.get(GraphSettingsKey), "SUM")
-  }
-
   def totalPageFans: Option[Graph] = {
     val GraphSettingsKey = "totalPageFans"
     getGraph(graphSettingsMap.get(GraphSettingsKey), "LAST")
   }
 
   object combinedGraphs {
+
+    def totalPostLikeReactionsBreakdown: Option[Graph] = {
+      val GraphSettingsKey = "totalPagePostReactionsBreakdown"
+      getGraph(graphSettingsMap.get(GraphSettingsKey), "SUM")
+    }
 
     def totalNewPeopleWhoLikeAndUnlike: Option[Graph] = {
       val GraphSettingsKey = "totalNewPeopleWhoLikeAndUnlike"

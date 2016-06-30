@@ -47,8 +47,8 @@ class PageInsightGraphs(graphSettingsMap: Map[String, GraphSettings], val metric
       getGraph(graphSettingsMap.get(GraphSettingsKey), "SUM")
     }
 
-    def postsImpressionsTotalAndUnique: Option[Graph] = {
-      val GraphSettingsKey = "postsImpressionsTotalAndUnique"
+    def pageImpressionsTotalAndUnique: Option[Graph] = {
+      val GraphSettingsKey = "pageImpressionsTotalAndUnique"
       getGraph(graphSettingsMap.get(GraphSettingsKey), "SUM")
     }
 

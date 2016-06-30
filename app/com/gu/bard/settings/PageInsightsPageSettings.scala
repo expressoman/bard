@@ -39,14 +39,14 @@ object PageInsightsPageSettings {
       axisYLabel = "No of Likes/Unlikes",
       Seq(MetricSettings.totalNewPeopleWhoLike, MetricSettings.totalNewPeopleWhoUnlike)
     ),
-    "postsImpressionsTotalAndUnique" -> GraphSettings(
+    "pageImpressionsTotalAndUnique" -> GraphSettings(
       title = "Total number of impressions for the page",
-      description = "Shows the total number of posts impressions and unique posts impressions",
+      description = "Shows the number of impressions seen of any content associated with your page.",
       whatsSuccess = " ... ",
       `type` = "line",
       axisXLabel = "Date",
       axisYLabel = "No of Impressions",
-      Seq(MetricSettings.totalPostsImpressions, MetricSettings.totalPostsImpressionsUnique)
+      Seq(MetricSettings.totalPageImpressions, MetricSettings.totalPageImpressionsUnique)
     ),
     "totalPageFans" -> GraphSettings(
       title = "Lifetime total likes",

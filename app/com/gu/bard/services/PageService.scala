@@ -50,7 +50,7 @@ object PageService {
         graphs = Seq(
           pageInsightsGraphsForLifetime.totalPageFans,
           postGraphs.totalPostsPerDay,
-          pageInsightsGraphsForDay.combinedGraphs.postsImpressionsTotalAndUnique,
+          pageInsightsGraphsForDay.combinedGraphs.pageImpressionsTotalAndUnique,
           pageInsightsGraphsForDay.combinedGraphs.totalPostLikeReactionsBreakdown,
           pageInsightsGraphsForDay.combinedGraphs.pageVideoViewsTotalAndUnique,
           pageInsightsGraphsForDay.combinedGraphs.pageVideoViewsComplete10sAnd30sTotalAndUnique,

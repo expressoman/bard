@@ -27,10 +27,7 @@ export default class Graph extends React.Component {
             <div className="col-md-6">
                 <div className="panel panel-default">
                     <div className="panel-heading">
-                        <strong>Metric: </strong>{graph.title}
-                        <br/>
-                        <p><strong>Why is this important? </strong> {graph.description}</p>
-                        <p><strong>What does success look like? </strong>{graph.whatsSuccess}</p>
+                        <strong>{graph.title}</strong>
                     </div>
                     <div className="panel-body">
                         {this.renderGraph(graph)}

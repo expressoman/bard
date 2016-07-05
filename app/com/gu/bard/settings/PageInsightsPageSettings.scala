@@ -7,8 +7,8 @@ object PageInsightsPageSettings {
   private val graphSettings = Map(
     "totalPosts" -> GraphSettings(
       title = "Total posts per week",
-      description = "Shows how much content we're publishing each week. Publishing should be consistent as the number of posts will affect audience growth.",
-      whatsSuccess = " ... ",
+      description = "",
+      whatsSuccess = "",
       `type` = "bar",
       axisXLabel = "Date",
       axisYLabel = "No of posts",
@@ -16,8 +16,8 @@ object PageInsightsPageSettings {
     ),
     "totalPagePostReactionsBreakdown" -> GraphSettings(
       title = "Total page post reactions by type",
-      description = "Shows the general reactions to page posts",
-      whatsSuccess = " ... ",
+      description = "",
+      whatsSuccess = "",
       `type` = "bar",
       axisXLabel = "Date",
       axisYLabel = "No of Reactions",
@@ -32,8 +32,8 @@ object PageInsightsPageSettings {
     ),
     "totalNewPeopleWhoLikeAndUnlike" -> GraphSettings(
       title = "Total number of new page likes/unlikes",
-      description = "Shows the number of people (unique) who are actively liking/unliking this page per week. Useful for observing the general health of a page.",
-      whatsSuccess = " ... ",
+      description = "",
+      whatsSuccess = "",
       `type` = "line",
       axisXLabel = "Date",
       axisYLabel = "No of Likes/Unlikes",
@@ -41,8 +41,8 @@ object PageInsightsPageSettings {
     ),
     "pageImpressionsTotalAndUnique" -> GraphSettings(
       title = "Total number of impressions for the page",
-      description = "Shows the number of impressions seen of any content associated with your page.",
-      whatsSuccess = " ... ",
+      description = "",
+      whatsSuccess = "",
       `type` = "line",
       axisXLabel = "Date",
       axisYLabel = "No of Impressions",
@@ -50,8 +50,8 @@ object PageInsightsPageSettings {
     ),
     "totalPageFans" -> GraphSettings(
       title = "Lifetime total likes",
-      description = "Shows the number of people who have liked your page.",
-      whatsSuccess = " ... ",
+      description = "",
+      whatsSuccess = "",
       `type` = "line",
       axisXLabel = "Date",
       axisYLabel = "No of Fans",
@@ -59,8 +59,8 @@ object PageInsightsPageSettings {
     ),
     "totalPageVideoViewsAndUnique" -> GraphSettings(
       title = "Total number of page video views",
-      description = "Total number of times videos have been viewed for more than 3 seconds.",
-      whatsSuccess = " ... ",
+      description = "",
+      whatsSuccess = "",
       `type` = "line",
       axisXLabel = "Date",
       axisYLabel = "No of views",
@@ -68,8 +68,8 @@ object PageInsightsPageSettings {
     ),
     "totalPageVideoViewsComplete10sAnd30sAndUnique" -> GraphSettings(
       title = "Total number of page video views (breakdown by view duration)",
-      description = "Total number of times page's videos was viewed for at least 10 or 30 seconds.",
-      whatsSuccess = " ... ",
+      description = "",
+      whatsSuccess = "",
       `type` = "bar",
       axisXLabel = "Date",
       axisYLabel = "No of views",

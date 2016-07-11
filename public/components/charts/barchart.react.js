@@ -1,7 +1,8 @@
 import React from 'react';
-import ChartistGraph from 'react-chartist';
-import ChartistAxisTitle from 'chartist-plugin-axistitle';
-import ChartistPluginLegend from 'chartist-plugin-legend';
+import ChartistGraph from 'react-chartist'
+import ChartistAxisTitle from 'chartist-plugin-axistitle'
+import ChartistPluginLegend from 'chartist-plugin-legend'
+import ChartistPluginTooltip from 'chartist-plugin-tooltip'
 import ChartService from '../../services/ChartService'
 
 export default class Barchart extends React.Component {
@@ -47,6 +48,9 @@ export default class Barchart extends React.Component {
                 }),
                 ChartistPluginLegend({
                     legendNames: graph.metrics.map(metric => metric.metricSettings.fbMetricName ),
+                }),
+                ChartistPluginTooltip({
+                    anchorToPoint: true
                 })
             ]
         };

@@ -18,7 +18,6 @@ export default {
         const timeframe = R.defaultTo('', R.head(matchedTimeframe));
 
         let decideStartDate = R.cond([
-            [R.equals("last-two-weeks"),   R.always(formattedDate(2))],
             [R.equals("last-four-weeks"),  R.always(formattedDate(4))],
             [R.equals("last-eight-weeks"), R.always(formattedDate(8))],
             [R.T,                          R.always(formattedDate(4))]

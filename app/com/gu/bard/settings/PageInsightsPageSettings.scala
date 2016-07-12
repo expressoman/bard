@@ -83,7 +83,6 @@ object PageInsightsPageSettings {
   )
 
   val config = Map(
-
     "cook-perfect" -> PageSettings(
       prettyPageName = "Cook Perfect",
       graphSettings = graphSettings
@@ -99,4 +98,14 @@ object PageInsightsPageSettings {
       graphSettings = graphSettings
     )
   )
+
+  def pageInsightsFbMetricNames: Seq[String] = {
+    /* Metrics that are not from insights API */
+    val excludedMetrics = Set("total_posts")
+
+    config.values.toSeq
+      .flatMap(_.graphSettings.values)
+      .flatMap { graphSettings => graphSettings.metricSettings.map(_.fbMetricName).distinct.filter(!excludedMetrics.contains(_)) }
+  }
+
 }

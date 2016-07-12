@@ -2,6 +2,7 @@ package com.gu.bard.stores
 
 import com.gu.bard.models.{ DateParameters, FacebookPageConfig }
 import com.gu.bard.services.FB
+import com.gu.bard.settings.PageInsightsPageSettings
 import com.restfb.types.Insight
 import com.typesafe.scalalogging.StrictLogging
 
@@ -19,10 +20,11 @@ object FacebookPageInsights extends StrictLogging {
 
   private def getPageInsights(period: String, dateParameters: DateParameters, fbPageConfig: FacebookPageConfig): Option[Seq[Insight]] = {
     val cacheKey = FacebookPageInsightsCache.key(fbPageConfig.name, dateParameters, period)
+    val requestedMetrics = PageInsightsPageSettings.pageInsightsFbMetricNames.mkString(",")
 
     FacebookPageInsightsCache.get(cacheKey) orElse {
       val fbClient = FB(fbPageConfig.accessToken)
-      val connection = s"${fbPageConfig.id}/insights"
+      val connection = s"${fbPageConfig.id}/insights/$requestedMetrics"
 
       val maybeInsights = FB.getData[Insight](connection, dateParameters, Some(period), fbClient)
       maybeInsights foreach (insights => FacebookPageInsightsCache.put(cacheKey, insights))

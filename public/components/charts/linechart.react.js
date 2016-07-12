@@ -48,7 +48,7 @@ export default class Linechart extends React.Component {
                     }
                 }),
                 ChartistPluginLegend({
-                    legendNames: graph.metrics.map(metric => metric.metricSettings.fbMetricName ),
+                    legendNames: graph.metrics.map(metric => metric.metricSettings.prettyFbMetricName ),
                 }),
                 ChartistPluginTooltip({
                     anchorToPoint: true

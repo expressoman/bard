@@ -32,6 +32,7 @@ class Cache[T <: Object, R <: Object] {
   def get(key: T): Option[R] = Option(cache.getIfPresent(key))
   def put(key: T, value: R) { cache.put(key, value) }
   def putAll(all: Map[T, R]) { cache.putAll(all.asJava) }
+  def invalidateAll(): Unit = { cache.invalidateAll }
 }
 
 object FacebookPageInsightsCache extends Cache[Integer, Seq[Insight]] with FacebookPageInsightsCache with CacheKey

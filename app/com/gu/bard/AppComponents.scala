@@ -1,5 +1,6 @@
 
 import com.gu.bard.models.FacebookPageConfig
+import com.gu.bard.services.CacheWarmup
 import com.gu.cm.{ ConfigurationLoader, Identity }
 import play.api.ApplicationLoader.Context
 import play.api.libs.ws.ahc.AhcWSComponents
@@ -8,6 +9,8 @@ import play.api.routing.Router
 import controllers._
 import play.api.i18n.I18nComponents
 import router.Routes
+import scala.concurrent.duration._
+import play.api.libs.concurrent.Execution.Implicits._
 
 class AppComponents(context: Context)
     extends BuiltInComponentsFromContext(context)
@@ -40,5 +43,9 @@ class AppComponents(context: Context)
 
   val assets = new Assets(httpErrorHandler)
   val router: Router = new Routes(httpErrorHandler, appController, healthcheckController, pageInsightsController, loginController, assets)
+
+  val cacheWarmup = actorSystem.actorOf(CacheWarmup.props(pages, fbPageConfig), "CacheWarmup")
+
+  actorSystem.scheduler.schedule(1.seconds, 12.hours, cacheWarmup, CacheWarmup.PreWarm)
 
 }

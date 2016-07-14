@@ -96,6 +96,41 @@ object PageInsightsPageSettings {
     "the-guardian" -> PageSettings(
       prettyPageName = "The Guardian",
       graphSettings = graphSettings
+    ),
+
+    "the-guardian-us" -> PageSettings(
+      prettyPageName = "The Guardian US",
+      graphSettings = graphSettings
+    ),
+
+    "the-guardian-au" -> PageSettings(
+      prettyPageName = "The Guardian AU",
+      graphSettings = graphSettings
+    ),
+
+    "guardian-football" -> PageSettings(
+      prettyPageName = "Guardian Football",
+      graphSettings = graphSettings
+    ),
+
+    "guardian-sport" -> PageSettings(
+      prettyPageName = "Guardian Sport",
+      graphSettings = graphSettings
+    ),
+
+    "guardian-culture" -> PageSettings(
+      prettyPageName = "Guardian Culture",
+      graphSettings = graphSettings
+    ),
+
+    "guardian-video" -> PageSettings(
+      prettyPageName = "Guardian Video",
+      graphSettings = graphSettings
+    ),
+
+    "guardian-fashion" -> PageSettings(
+      prettyPageName = "Guardian Fashion",
+      graphSettings = graphSettings
     )
   )
 

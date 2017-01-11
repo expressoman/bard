@@ -6,7 +6,15 @@ name := "bard"
 scalacOptions ++= Seq("-feature", "-deprecation", "-unchecked", "-target:jvm-1.8", "-Xfatal-warnings")
 scalacOptions in doc in Compile := Nil
 
-lazy val bard = (project in file(".")).enablePlugins(PlayScala, RiffRaffArtifact)
+lazy val bard = (project in file(".")).enablePlugins(PlayScala, RiffRaffArtifact, JavaAppPackaging, UniversalPlugin)
+
+mappings in Universal ++= (baseDirectory.value / "resources" *** ).get pair relativeTo(baseDirectory.value)
+
+riffRaffUploadArtifactBucket := Option("riffraff-artifact")
+riffRaffUploadManifestBucket := Option("riffraff-builds")
+riffRaffManifestProjectName := s"Off-platform::${name.value}"
+
+addCommandAlias("dist", ";riffRaffArtifact")
 
 resolvers += "Sonatype releases" at "https://oss.sonatype.org/content/repositories/releases"
 
@@ -22,11 +30,6 @@ libraryDependencies ++= Seq(
 )
 
 routesGenerator := InjectedRoutesGenerator
-riffRaffPackageName := "bard"
-riffRaffPackageType := (packageZipTarball in Universal).value
-riffRaffUploadArtifactBucket := Option("riffraff-artifact")
-riffRaffUploadManifestBucket := Option("riffraff-builds")
-
 
 initialize := {
   val _ = initialize.value

@@ -1,0 +1,19 @@
+stacks:
+- content-api-bard
+regions:
+- eu-west-1
+deployments:
+  bard:
+    type: autoscaling
+    parameters:
+      bucket: content-api-dist
+  bard-ami-update:
+    type: ami-cloudformation-parameter
+    parameters:
+      amiTags:
+        Recipe: ubuntu-wily-java8
+        AmigoStage: PROD
+      cloudFormationStackName: bard
+      prependStackToCloudFormationStackName: false
+      appendStageToCloudFormationStackName: true
+      cloudFormationStackByTags: false

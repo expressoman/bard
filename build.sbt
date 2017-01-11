@@ -10,6 +10,7 @@ lazy val bard = (project in file(".")).enablePlugins(PlayScala, RiffRaffArtifact
 
 mappings in Universal ++= (baseDirectory.value / "resources" *** ).get pair relativeTo(baseDirectory.value)
 
+riffRaffPackageType := (packageZipTarball in config("universal")).value
 riffRaffUploadArtifactBucket := Option("riffraff-artifact")
 riffRaffUploadManifestBucket := Option("riffraff-builds")
 riffRaffManifestProjectName := s"Off-platform::${name.value}"

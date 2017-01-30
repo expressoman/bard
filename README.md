@@ -1,10 +1,10 @@
+# This project is now depreciated
+
 # Bard
-
-
 
 ## Overview
 Bard is ...
- 
+
 ## To run locally
 
 ```
